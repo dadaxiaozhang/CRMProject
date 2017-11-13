@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="find" extends="json-default" namespace="/dept">
+
+        <action name="findAllDept" class="com.lanou.department.action.DepartmentAction" method="findAllDepartment">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
+        <action name="addDept" class="deptAction" method="addDept">
+            <result name="success" type="redirectAction">
+            <param name="actionName">findAllDept</param>
+            </result>
+
+        </action>
+
+        <action name="update" class="deptAction">
+
+            <result name="success">/pages/department/addOrEditDepartment.jsp
+                <!--<param name="actionName">findAllDept</param>-->
+            </result>
+
+        </action>
+
+    </package>
+
+</struts>
