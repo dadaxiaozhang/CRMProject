@@ -5,7 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/pages/post/addOrEditPost.jsp" line="54" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2c5054d-4374-428b-af40-b866744ed750" name="Default" comment="" />
+    <list default="true" id="e2c5054d-4374-428b-af40-b866744ed750" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="CRMProject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1541,7 +1543,7 @@
       <workItem from="1510879959758" duration="30398000" />
       <workItem from="1510975313034" duration="22090000" />
       <workItem from="1511060546763" duration="27302000" />
-      <workItem from="1511138009774" duration="5793000" />
+      <workItem from="1511138009774" duration="5860000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1510575249172</created>
@@ -1593,7 +1595,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232622000" />
+    <option name="totallyTimeSpent" value="232689000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="25" width="2128" height="993" extended-state="0" />
