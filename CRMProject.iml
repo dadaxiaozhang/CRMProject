@@ -10,8 +10,8 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
       </configuration>
       <facet type="Struts2" name="Struts 2">
@@ -23,6 +23,7 @@
             <file>file://$MODULE_DIR$/src/main/resources/struts.xml</file>
             <file>file://$MODULE_DIR$/src/main/resources/struts/Staff.xml</file>
             <file>file://$MODULE_DIR$/src/main/resources/struts/Department.xml</file>
+            <file>file://$MODULE_DIR$/src/main/resources/struts/Post.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -32,7 +33,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="4cf5d4eb-0537-4fb5-a286-f08f23029b82" />
-          <unit-entry name="sessionFactory" value="4cf5d4eb-0537-4fb5-a286-f08f23029b82" />
+          <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
@@ -43,11 +44,14 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring-config.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/dept-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/post-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/spring-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/staff-config.xml</file>
         </fileset>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">

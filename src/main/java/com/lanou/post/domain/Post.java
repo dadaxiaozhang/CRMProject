@@ -11,8 +11,15 @@ import java.util.Set;
  */
 public class Post {
     private String postId,postName;
-    private Set<Staff> staffs = new HashSet<>();
+    private Set<Staff> staffs = new HashSet<Staff>();
     private Department dept;
+
+    public Post() {
+    }
+
+    public Post(String postName) {
+        this.postName = postName;
+    }
 
     public String getPostId() {
         return postId;

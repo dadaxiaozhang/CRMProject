@@ -52,15 +52,16 @@ FONT-SIZE: 12px; COLOR: #4b4b4b; LINE-HEIGHT: 18px; TEXT-DECORATION: none
                     <font color="#ff0000">
                         <s:fielderror fieldName="msg" theme="simple"/>
                     </font>
-					用户名：<input type="text" name="loginName" class="msg" /><br/><br/>
 					<font color="#ff0000">
 						<s:fielderror fieldName="loginName" theme="simple"/>
 					</font>
+					<font color="#ff0000">
+					<s:fielderror fieldName="loginPwd" theme="simple"/>
+				    </font>
+					用户名：<input type="text" name="loginName" class="msg" /><br/><br/>
 
 					密&nbsp;码：<input type="password" name="loginPwd" class="msg" /><br/><br/>
-					<font color="#ff0000">
-						<s:fielderror fieldName="loginPwd" theme="simple"/>
-					</font>
+
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" class="btn" value="登录 " />
 

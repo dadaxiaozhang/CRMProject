@@ -12,10 +12,9 @@
         <many-to-one name="dept"
                      class="com.lanou.department.domain.Department"
                      column="DEPT_ID"
-                     cascade="all"
                      lazy="false"/>
 
-        <set name="staffs" table="T_STAFF" cascade="all" inverse="true">
+        <set name="staffs" table="T_STAFF"  inverse="true" lazy="false">
             <key column="POST_ID"></key>
             <one-to-many class="com.lanou.staff.domain.Staff"/>
         </set>

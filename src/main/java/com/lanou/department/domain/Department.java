@@ -11,7 +11,7 @@ import java.util.Set;
 public class Department {
 
     private String deptId,deptName;
-    private Set<Post> posts = new HashSet<>();
+    private Set<Post> posts = new HashSet<Post>();
 
     public Department() {
     }

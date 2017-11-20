@@ -23,7 +23,7 @@ import java.lang.reflect.Type;
 public class BaseAction<T,S> extends ActionSupport implements ModelDriven<T> {
 
     private T model;
-    protected  S service;
+    protected S service;
 
     public BaseAction(){
         //获取当前类的Class
@@ -58,12 +58,10 @@ public class BaseAction<T,S> extends ActionSupport implements ModelDriven<T> {
     public void sessionPut(String key,Object value){
         ActionContext.getContext().getSession().put(key, value);
     }
+
     public void applicationPut(String key,Object value){
         ActionContext.getContext().getApplication().put(key, value);
     }
-
-
-
 
     public HttpServletRequest getRequest(){
         return ServletActionContext.getRequest();
@@ -71,12 +69,8 @@ public class BaseAction<T,S> extends ActionSupport implements ModelDriven<T> {
     public HttpServletResponse getResponse(){
         return ServletActionContext.getResponse();
     }
-
-
-
     public void setService(S service) {
         this.service = service;
     }
-
 
 }

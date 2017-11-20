@@ -6,41 +6,24 @@ import java.util.List;
  * Created by dllo on 17/11/9.
  */
 public interface BaseDao<T> {
-    /**
-     * 添加
-     * @param t
-     */
-
-    void save(T t);
-
-    /**
-     * 更新
-     */
-    boolean update(T t);
 
     /**
      * 删除
      */
     boolean delete(T t);
 
-    boolean saveOrUpdate(T t);
-
     /**
-     * 通过id查询
+     * 添加或修改
+     * @param t
      */
-    T findById(java.io.Serializable id);
+
+    void saveOrUpdate(T t);
+
     /**
      * 查询所有
      */
     List<T> findAll();
 
-    /**
-     * 带有条件查询
-     * @param condition 条件
-     * @param params   参数
-     * @return
-     */
-    List<T> findAll(String condition, Object... params);
 //
 //    T find(String loginName, String loginPwd);
 
@@ -51,7 +34,7 @@ public interface BaseDao<T> {
      * @return
      */
 //    int getTotalRecord();
-    int getTotalrecord(String condition, Object[] params);
+//    int getTotalrecord(String condition, Object[] params);
 
     /**
      * 获取到数据  带分页的参数的

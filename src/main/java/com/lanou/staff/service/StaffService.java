@@ -13,9 +13,7 @@ public interface StaffService extends BaseDao<Staff> {
 
     boolean login(Staff staff);
 
-
-    @Override
-    void save(Staff staff);
+    Staff findStaffByloginName(String loginName);
 
     @Override
     boolean delete(Staff staff);
@@ -23,19 +21,10 @@ public interface StaffService extends BaseDao<Staff> {
     @Override
     List<Staff> findAll();
 
-    @Override
-    Staff findById(Serializable id);
+    List<Staff> findByConditon(Staff staff);
 
     @Override
-    boolean update(Staff staff);
+    void saveOrUpdate(Staff staff);
 
-    @Override
-    boolean saveOrUpdate(Staff staff);
-
-    @Override
-    List<Staff> findAll(String condition, Object... params);
-
-    @Override
-    int getTotalrecord(String condition, Object[] params);
 
 }

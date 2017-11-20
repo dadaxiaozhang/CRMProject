@@ -3,13 +3,14 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.lanou.department.domain">
+
     <class name="Department" table="T_DEPT">
         <id name="deptId" column="DEPT_ID">
             <generator class="uuid"/>
         </id>
         <property name="deptName"/>
 
-        <set name="posts" table="T_POST" cascade="all" inverse="true">
+        <set name="posts" table="T_POST"  inverse="true" lazy="false">
             <key column="DEPT_ID"></key>
             <one-to-many class="com.lanou.post.domain.Post"/>
         </set>

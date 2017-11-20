@@ -15,17 +15,26 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public List<Post> findAll() {
         List<Post> list = (List<Post>) getHibernateTemplate().find("from Post T_POST");
 
-        return null;
-    }
-    @Override
-    public void save(Post post) {
-        getHibernateTemplate().save(post);
-
+        return list;
     }
 
     @Override
-    public boolean update(Post post) {
-        return false;
+    public List<Post> findPostById(String deptId) {
+        String sql="from Post T_Post where dept.id = ?";
+        List<Post> list = (List<Post>) getHibernateTemplate().find(sql, deptId);
+
+        return list;
+    }
+
+    @Override
+    public void saveOrUpdate(Post post) {
+
+        if (post.getPostId().isEmpty()) {
+            getHibernateTemplate().save(post);
+        } else {
+            getHibernateTemplate().saveOrUpdate(post);
+        }
+
     }
 
     @Override
@@ -33,24 +42,4 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         return false;
     }
 
-    @Override
-    public List<Post> findAll(String condition, Object... params) {
-        return null;
-    }
-
-    @Override
-    public int getTotalrecord(String condition, Object[] params) {
-        return 0;
-    }
-
-
-    @Override
-    public boolean saveOrUpdate(Post post) {
-        return false;
-    }
-
-    @Override
-    public Post findById(Serializable id) {
-        return null;
-    }
 }

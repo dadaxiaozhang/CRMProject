@@ -1,21 +1,16 @@
 package com.lanou.department.dao.impl;
 
+import com.lanou.base.PageHibernateCallback;
 import com.lanou.department.dao.DepartmentDao;
 import com.lanou.department.domain.Department;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 17/11/13.
  */
 public class DepartmentDaoImpl extends HibernateDaoSupport implements DepartmentDao {
-
-    @Override
-    public void save(Department department) {
-        getHibernateTemplate().save(department);
-    }
 
     @Override
     public boolean delete(Department department) {
@@ -29,35 +24,40 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
     }
 
     @Override
-    public Department findById(Serializable id) {
-        return null;
-    }
-
-
-    @Override
-    public boolean update(Department department) {
-        return false;
-    }
-
-    @Override
-    public boolean saveOrUpdate(Department department) {
+    public void saveOrUpdate(Department department) {
         if (department.getDeptId().isEmpty()) {
-            getHibernateTemplate().save(department);
+                getHibernateTemplate().save(department);
         } else {
             getHibernateTemplate().saveOrUpdate(department);
         }
-        return true;
     }
 
+    /**
+     *
+     * @param startIndex 开始索引
+     * @param pageSize  每页显示记录数
+     * @return
+     */
     @Override
-    public List<Department> findAll(String condition, Object... params) {
-        return null;
+    public List<Department> findAllDept(int startIndex, int pageSize) {
+        String hql = "from Department where 1 = 1";
+        return getHibernateTemplate().execute(new PageHibernateCallback<Department>(hql,startIndex,pageSize));
+
     }
 
-
+    /**
+     *获取总的数据数
+     * @return
+     */
     @Override
-    public int getTotalrecord(String condition, Object[] params) {
-        getHibernateTemplate().find(condition, params);
+    public int getTotalRecord() {
+
+        String hql = "select count(c) from Department c where 1=1";
+        List<Long> find = (List<Long>) getHibernateTemplate().find(hql);
+        if (find != null){
+            return find.get(0).intValue();
+        }
         return 0;
     }
+
 }

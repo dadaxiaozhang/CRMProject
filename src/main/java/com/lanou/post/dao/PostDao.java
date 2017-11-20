@@ -11,11 +11,8 @@ import java.util.List;
 public interface PostDao extends BaseDao<Post> {
     List<Post> findAll();
 
-    void save(Post post);
+    List<Post> findPostById(String deptId);
 
     @Override
-    boolean update(Post post);
-
-    @Override
-    boolean saveOrUpdate(Post post);
+    void saveOrUpdate(Post post);
 }

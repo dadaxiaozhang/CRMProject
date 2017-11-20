@@ -13,4 +13,5 @@
             <message>请输入密码</message>
         </field-validator>
     </field>
+
 </validators>

@@ -48,18 +48,30 @@
         <td width="7%" align="center">编辑</td>
     </tr>
 
-    <s:iterator value="allList" var="dept">
+    <%--<s:iterator value="allList" var="dept">--%>
 
-        <tr class="table2">
+        <%--<tr class="table2">--%>
 
+            <%--<td align="center"><s:property value="deptName"/></td>--%>
+
+            <%--<td width="7%" align="center">--%>
+                <%--<s:a action="findAllDept">--%>
+                    <%--<a href="/dept/update.action?deptId=${dept.deptId}&deptName=${dept.deptName}"/>--%>
+                    <%--<img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>--%>
+                <%--</s:a>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+    <%--</s:iterator>--%>
+
+    <s:iterator value="#pageBean.data" var="dept">
+        <tr class="table1">
             <td align="center"><s:property value="deptName"/></td>
-
             <td width="7%" align="center">
-                <s:a action="findAllDept">
-                    <%--<s:param name="deptId" value="deptId"/>--%>
+                <s:a action="deptAction_findAllDepts">
                     <a href="/dept/update.action?deptId=${dept.deptId}&deptName=${dept.deptName}"/>
                     <img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>
                 </s:a>
+            </td>
             </td>
         </tr>
     </s:iterator>
@@ -70,13 +82,41 @@
 <table border="0" cellspacing="0" cellpadding="0" align="center">
     <tr>
         <td align="right">
-            <span>第1/3页</span>
-            <span>
-        	<a href="#">[首页]</a>&nbsp;&nbsp;
-            <a href="#">[上一页]</a>&nbsp;&nbsp;
-            <a href="#">[下一页]</a>&nbsp;&nbsp;
-            <a href="#">[尾页]</a>
-        </span>
+            第<s:property value="%{#pageBean.pageNum}"/>页/共<s:property
+                value="#pageBean.totalPage"/>页</span>
+            <s:a action="deptAction_findAllDepts">
+                首页
+                <s:param name="pageNum" value="'1'"/>
+            </s:a>
+            <s:if test="%{#pageBean.pageNum > 1}">
+                <s:a action="deptAction_findAllDepts">
+                    上一页
+                    <s:param name="pageNum" value="%{#pageBean.pageNum - 1}"/>
+                </s:a>
+            </s:if>
+            <s:iterator var="i" begin="%{#pageBean.start}" end="%{#pageBean.end}">
+                <s:if test="%{#i eq #pageBean.pageNum}">
+                    <font color="red">
+                        <s:property value="%{#i}"/>
+                    </font>
+                </s:if>
+                <s:else>
+                    <s:a action="deptAction_findAllDepts">
+                        [<s:property value="%{#i}"/>]
+                        <s:param name="pageNum" value="%{#i}"/>
+                    </s:a>
+                </s:else>
+            </s:iterator>
+            <s:if test="%{#pageBean.pageNum < #pageBean.totalPage}">
+                <s:a action="deptAction_findAllDepts">
+                    <s:param name="pageNum" value="%{#pageBean.pageNum + 1}"/>
+                    下一页
+                </s:a>
+            </s:if>
+            <s:a action="deptAction_findAllDepts">
+                <s:param name="pageNum" value="%{#pageBean.totalPage}"/>
+                尾页
+            </s:a>
         </td>
     </tr>
 </table>

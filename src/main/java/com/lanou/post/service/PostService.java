@@ -9,17 +9,12 @@ import java.util.List;
  * Created by dllo on 17/11/13.
  */
 public interface PostService extends BaseDao<Post> {
-    @Override
-    void save(Post post);
-
 
     @Override
     List<Post> findAll();
 
+    List<Post> findPostById(String deptId);
 
     @Override
-    boolean update(Post post);
-
-    @Override
-    boolean saveOrUpdate(Post post);
+    void saveOrUpdate(Post post);
 }

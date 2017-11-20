@@ -1,10 +1,10 @@
 package com.lanou.department.service.impl;
 
+import com.lanou.base.PageBean;
 import com.lanou.department.dao.DepartmentDao;
 import com.lanou.department.domain.Department;
 import com.lanou.department.service.DepartmentService;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,13 +12,8 @@ import java.util.List;
  */
 public class DepartmentServiceImpl implements DepartmentService {
 
-
     private DepartmentDao departmentDao;
 
-    @Override
-    public void save(Department department) {
-        departmentDao.saveOrUpdate(department);
-    }
 
     @Override
     public boolean delete(Department department) {
@@ -31,31 +26,29 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentDao.findAll();
     }
 
+    /**
+     * @param dept     部门
+     * @param pageNum  当前页
+     * @param pageSize 每页显示条数
+     * @return
+     */
     @Override
-    public Department findById(Serializable id) {
-        return null;
+    public PageBean<Department> findAllDept(Department dept, int pageNum, int pageSize) {
+
+        //获取总记录数
+        int totalRecord = departmentDao.getTotalRecord();
+        //创建对象
+        PageBean<Department> pageBean = new PageBean<Department>(pageNum, pageSize, totalRecord);
+        //分页数据
+        List<Department> allDept = departmentDao.findAllDept(pageBean.getStartIndex(), pageBean.getPageSize());
+        //将获取到的分页数据封装到PageBean中
+        pageBean.setData(allDept);
+        return pageBean;
     }
 
     @Override
-    public boolean update(Department department) {
-        return false;
-    }
-
-    @Override
-    public boolean saveOrUpdate(Department department) {
+    public void saveOrUpdate(Department department) {
         departmentDao.saveOrUpdate(department);
-        return true;
-
-    }
-
-    @Override
-    public List<Department> findAll(String condition, Object... params) {
-        return null;
-    }
-
-    @Override
-    public int getTotalrecord(String condition, Object[] params) {
-        return 0;
     }
 
     public DepartmentDao getDepartmentDao() {

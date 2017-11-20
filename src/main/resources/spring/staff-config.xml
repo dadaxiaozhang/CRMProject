@@ -4,20 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="postDao" class="com.lanou.post.dao.impl.PostDaoImpl">
+    <bean id="staffDao" class="com.lanou.staff.dao.impl.StaffDaoImpl">
+
         <!--为继承来的SessionFactory属性赋值-->
         <property name="sessionFactory" ref="sessionFactory"/>
 
     </bean>
 
-    <bean id="postService" class="com.lanou.post.service.impl.PostServiceImpl">
-        <property name="postDao" ref="postDao"/>
+    <bean id="staffService" class="com.lanou.staff.service.impl.StaffServiceImpl">
+        <property name="staffDao" ref="staffDao"/>
     </bean>
 
-    <bean id="postAction" class="com.lanou.post.action.PostAction" scope="prototype">
-        <property name="service" ref="postService"/>
+    <bean id="staffAction" class="com.lanou.staff.action.StaffAction" scope="prototype">
+        <property name="service" ref="staffService"/>
         <property name="deptService" ref="departmentService"/>
+        <property name="postService" ref="postService"/>
     </bean>
-
-
 </beans>

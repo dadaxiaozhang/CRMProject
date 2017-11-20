@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
         <struts>
-        <package name="login" extends="json-default" namespace="/staff">
+        <package name="login" extends="base-default" namespace="/staff">
 
                 <action name="staffAction_login" class="staffAction" method="login">
                         <result name="success">/pages/frame.jsp</result>
@@ -15,5 +15,35 @@
                         <!--<result name="input">/pages/error.jsp</result>-->
                 </action>
 
+                <action name="saveStaff" class="staffAction" method="saveStaff">
+                        <result name="success" type="redirectAction">findAllStaff</result>
+                </action>
+
+                <action name="addStaff" class="staffAction" method="getDept">
+                        <result name="success">/pages/staff/addStaff.jsp</result>
+                </action>
+
+                <action name="updateStaff" class="staffAction" method="update">
+                        <result name="success">/pages/staff/editStaff.jsp</result>
+                </action>
+
+                <action name="getPosts" class="staffAction" method="getPostByDeptId">
+                <result name="success" type="json">
+                        <param name="root">posts</param>
+                        <param name="includeProperties">\[\d\]\.postId,\[\d\]\.postName</param>
+                </result>
+                </action>
+
+                <action name="findStaffByCondition" class="staffAction" method="getStaffByCondition">
+                        <result name="success">/pages/staff/listStaff.jsp</result>
+                </action>
+
+                <action name="staffAction_logout" class="staffAction" method="loginout">
+                        <result name="success" type="redirectAction">staffAction_login</result>
+                </action>
+
+                <action name="editPassword" class="staffAction" method="editPwd">
+                        <result name="success" type="redirectAction">staffAction_login</result>
+                </action>
         </package>
 </struts>

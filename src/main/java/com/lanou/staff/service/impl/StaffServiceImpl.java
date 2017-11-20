@@ -12,17 +12,12 @@ import java.util.List;
  * Created by dllo on 17/11/9.
  */
 public class StaffServiceImpl implements StaffService {
-    @Resource
+
     private StaffDao staffDao;
 
     @Override
     public boolean login(Staff staff) {
         return staffDao.login(staff);
-    }
-
-    @Override
-    public void save(Staff staff) {
-        staffDao.save(staff);
     }
 
     @Override
@@ -37,35 +32,18 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public Staff findById(Serializable id) {
-        return null;
+    public List<Staff> findByConditon(Staff staff) {
+        return staffDao.findByConditon(staff);
+    }
+
+    public Staff findStaffByloginName(String loginName){
+        return staffDao.findStaffByloginName(loginName);
     }
 
     @Override
-    public boolean update(Staff staff) {
-        return true;
+    public void saveOrUpdate(Staff staff) {
+        staffDao.saveOrUpdate(staff);
     }
-
-    @Override
-    public boolean saveOrUpdate(Staff staff) {
-        return true;
-    }
-
-    @Override
-    public List<Staff> findAll(String condition, Object... params) {
-        return null;
-    }
-
-    @Override
-    public int getTotalrecord(String condition, Object[] params) {
-        return 0;
-    }
-
-
-
-
-
-
 
     public StaffDao getStaffDao() {
         return staffDao;
