@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="find1" extends="base-default" namespace="/post">
+
+        <action name="findAllPost" class="postAction" method="findAllPost">
+            <result name="success">/pages/post/listPost.jsp</result>
+        </action>
+
+
+        <action name="addPost" class="postAction" method="addPost">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+        </action>
+
+        <action name="savePost" class="postAction" method="savePost">
+            <result name="success" type="redirectAction">findAllPost</result>
+        </action>
+
+        <action name="updatePost" class="postAction" method="update">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+
+        </action>
+
+
+    </package>
+</struts>
